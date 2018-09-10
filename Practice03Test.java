@@ -54,11 +54,28 @@ public class Practice03Test {
 
 	public int find_min_iterative () {
 		// TODO: Fill in this iterative function.
+    int min = 0;
+    for (int i = 0; i < arr.length; i++){
+    	if (arr[i] < arr[min]){
+    		min = i;
+    	}
+    }
+    return min;
+
 	}
 
 
-	public int find_min_recursive () {
+	public int find_min_recursive (int arr_length_1) {
 		// TODO: Fill in this recursive function.
+        if (arr_length_1 == 0)
+        {
+            return 0;
+        }
+        int min = find_min_recursive(arr_length_1-1);
+        if (arr[min] > arr[arr_length_1]){
+            return arr_length_1;
+        }
+        return min;
 	}
 
 
@@ -68,7 +85,7 @@ public class Practice03Test {
 	 */
 	public void print_min() {
 		System.out.println("Iteratively determined min at index " + find_min_iterative());
-		System.out.println("Recursively determined min at index " + find_min_recursive());
+		System.out.println("Recursively determined min at index " + find_min_recursive(arr.length-1));
 	}
 
 
